@@ -1,0 +1,31 @@
+paths:
+  input_dir: "data/input"
+  output_dir: "data/output"
+
+preprocess:
+  clahe:
+    enabled: true
+    clip_limit: 2.0
+    tile_grid_size: 8
+
+segment:
+  k_dynamic: 0.834       # your notebook’s k
+  method: "dynamic"      # (kept for future flexibility)
+  invert: true
+  morph_open_kernel: 2    # 2x2 kernel, same as notebook
+  morph_open_iterations: 1
+
+filter:
+  min_area_px: 5         # your notebook’s min_size
+  max_area_px: 11        # your notebook’s max_size
+
+visualize:
+  grid: true
+  overlay_color: [255, 0, 0]   # red contours
+  overlay_thickness: 1
+  show_windows: false          # leave false for headless runs
+
+export:
+  save_mask: true
+  save_overlay: true
+  save_csv: true
