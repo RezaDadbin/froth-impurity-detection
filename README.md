@@ -5,6 +5,13 @@
 **Froth Impurity Detector** is a computer vision project using **OpenCV** and **Python** to detect and count impurities (dark particles) in froth or foam images. 
 It works completely offline and automatically generates binary masks, overlay images, and CSV summaries.
 
+## What This Demonstrates
+
+- Classical image preprocessing for industrial froth imagery
+- Dynamic thresholding and contour filtering for dark-particle detection
+- Reproducible command-line processing for single images or folders
+- CSV and visual output generation for inspection and comparison
+
 ---
 
 ## ⚙️ How It Works
@@ -20,8 +27,8 @@ It works completely offline and automatically generates binary masks, overlay im
 ## 🧰 Installation
 
 ```bash
-git clone https://github.com/<your-username>/froth-impurity-detector.git
-cd froth-impurity-detector
+git clone https://github.com/RezaDadbin/froth-impurity-detection.git
+cd froth-impurity-detection
 python -m venv .venv
 source .venv/bin/activate   # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
