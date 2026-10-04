@@ -1,9 +1,15 @@
-# 🫧 Froth Impurity Detector
+# Froth Impurity Detector
 
-## 📘 Overview
+## Overview
 
 **Froth Impurity Detector** is a computer vision project using **OpenCV** and **Python** to detect and count impurities (dark particles) in froth or foam images. 
 It works completely offline and automatically generates binary masks, overlay images, and CSV summaries.
+
+## Research Status and Data Availability
+
+This repository forms part of broader froth-image analysis research. Experimental work completed; a data-paper manuscript is currently in preparation.
+
+The research dataset is private/proprietary and is not distributed with this repository. Code is provided for research and reproducibility with compatible, independently supplied data. Exact reproduction of the private experiments also requires their data, splits, configuration, and checkpoints.
 
 ## What This Demonstrates
 
@@ -14,17 +20,17 @@ It works completely offline and automatically generates binary masks, overlay im
 
 ---
 
-## ⚙️ How It Works
+## How It Works
 
 1. **Preprocessing:** Converts images to grayscale and applies CLAHE to enhance contrast.
 2. **Dynamic Thresholding:** Computes a threshold `T = mean - k * std` to segment dark regions.
 3. **Morphology:** Performs a small open operation to remove noise, then inverts the binary mask.
 4. **Contour Filtering:** Finds all contours and filters by area to count impurities.
-5. **Visualization:** Draws red contours over the original image and writes impurity counts.
+5. **Visualization:** Draws configured contour overlays over the original image and writes impurity counts.
 
 ---
 
-## 🧰 Installation
+## Installation
 
 ```bash
 git clone https://github.com/RezaDadbin/froth-impurity-detection.git
@@ -36,9 +42,9 @@ pip install -r requirements.txt
 
 ---
 
-## 🖥️ Usage
+## Usage
 
-### ▶️ Process a Single Image
+### Process a Single Image
 
 Run this **from the project root** (where `src/` is located):
 
@@ -51,7 +57,7 @@ This will generate:
 - `data/output/froth_sample1_overlay.png` → annotated image with contours  
 - `data/output/results.csv` → table with impurity counts  
 
-### 📁 Process an Entire Folder
+### Process an Entire Folder
 
 ```bash
 python -m src.froth_impurity.cli --folder data/input --cfg configs/default.yaml
@@ -62,7 +68,7 @@ Results will appear in `data/output/` automatically.
 
 ---
 
-## ⚙️ Configuration (`configs/default.yaml`)
+## Configuration (`configs/default.yaml`)
 
 ```yaml
 paths:
@@ -88,17 +94,18 @@ filter:
 visualize:
   overlay_color: [255, 0, 0]
   overlay_thickness: 1
-  alpha_overlay: 0.35
+  grid: true
+  show_windows: false
 ```
 
 You can edit this file to fine-tune detection behavior.
 
 ---
 
-## 📂 Folder Layout
+## Folder Layout
 
 ```
-froth-impurity-detector/
+froth-impurity-detection/
 ├── configs/
 │   └── default.yaml
 ├── src/froth_impurity/
@@ -116,7 +123,7 @@ froth-impurity-detector/
 
 ---
 
-## 📦 Data Folders
+## Data Folders
 
 - **`data/input/`** → place your test images here, e.g.
   ```
@@ -136,7 +143,7 @@ froth-impurity-detector/
 
 ---
 
-## 🧠 Tips
+## Tips
 
 - Increase `segment.k_dynamic` → detects fewer (stricter) impurities.  
 - Decrease `segment.k_dynamic` → detects more impurities.  
@@ -145,16 +152,15 @@ froth-impurity-detector/
 
 ---
 
-## 🧑‍💻 Author
+## Authors
 
 - **Reza Dadbin** — GitHub: https://github.com/RezaDadbin
 - **Sina Lotfi** — GitHub: https://github.com/cinaLotfi
 
 ---
 
-## 🏁 Summary
+## Summary
 
-A fully local, configurable OpenCV pipeline for impurity detection in froth surfaces.  
-Accurate, extendable, and perfect for research or production-level froth analysis.
+A configurable local OpenCV pipeline for impurity detection and analysis in froth imagery.
 
 ---
